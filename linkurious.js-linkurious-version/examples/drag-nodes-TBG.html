@@ -1,0 +1,478 @@
+<!-- START SIGMA IMPORTS -->
+<script src="../src/sigma.core.js"></script>
+<script src="../src/conrad.js"></script>
+<script src="../src/utils/sigma.utils.js"></script>
+<script src="../src/utils/sigma.polyfills.js"></script>
+<script src="../src/sigma.settings.js"></script>
+<script src="../src/classes/sigma.classes.dispatcher.js"></script>
+<script src="../src/classes/sigma.classes.configurable.js"></script>
+<script src="../src/classes/sigma.classes.graph.js"></script>
+<script src="../src/classes/sigma.classes.camera.js"></script>
+<script src="../src/classes/sigma.classes.quad.js"></script>
+<script src="../src/classes/sigma.classes.edgequad.js"></script>
+<script src="../src/captors/sigma.captors.mouse.js"></script>
+<script src="../src/captors/sigma.captors.touch.js"></script>
+<script src="../src/renderers/sigma.renderers.canvas.js"></script>
+<script src="../src/renderers/sigma.renderers.webgl.js"></script>
+<script src="../src/renderers/sigma.renderers.svg.js"></script>
+<script src="../src/renderers/sigma.renderers.def.js"></script>
+<script src="../src/renderers/webgl/sigma.webgl.nodes.def.js"></script>
+<script src="../src/renderers/webgl/sigma.webgl.nodes.fast.js"></script>
+<script src="../src/renderers/webgl/sigma.webgl.edges.def.js"></script>
+<script src="../src/renderers/webgl/sigma.webgl.edges.fast.js"></script>
+<script src="../src/renderers/webgl/sigma.webgl.edges.arrow.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.labels.def.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.hovers.def.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.nodes.def.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.edges.def.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.edges.curve.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.edges.arrow.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.edgehovers.def.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.edgehovers.curve.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.edgehovers.arrow.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.edgehovers.curvedArrow.js"></script>
+<script src="../src/renderers/canvas/sigma.canvas.extremities.def.js"></script>
+<script src="../src/renderers/svg/sigma.svg.utils.js"></script>
+<script src="../src/renderers/svg/sigma.svg.nodes.def.js"></script>
+<script src="../src/renderers/svg/sigma.svg.edges.def.js"></script>
+<script src="../src/renderers/svg/sigma.svg.edges.curve.js"></script>
+<script src="../src/renderers/svg/sigma.svg.labels.def.js"></script>
+<script src="../src/renderers/svg/sigma.svg.hovers.def.js"></script>
+<script src="../src/middlewares/sigma.middlewares.rescale.js"></script>
+<script src="../src/middlewares/sigma.middlewares.copy.js"></script>
+<script src="../src/misc/sigma.misc.animation.js"></script>
+<script src="../src/misc/sigma.misc.bindEvents.js"></script>
+<script src="../src/misc/sigma.misc.bindDOMEvents.js"></script>
+<script src="../src/misc/sigma.misc.drawHovers.js"></script>
+<!-- END SIGMA IMPORTS -->
+<script src="../plugins/sigma.parsers.json/sigma.parsers.json.js"></script>
+<script src="../plugins/sigma.parsers.cypher/sigma.parsers.cypher.js"></script>
+<script src="../plugins/sigma.renderers.halo/sigma.renderers.halo.js"></script>
+
+<script src="../plugins/sigma.plugins.dragNodes/settings.js"></script>
+<script src="../plugins/sigma.plugins.dragNodes/sigma.plugins.dragNodes.js"></script>
+
+<script src="../plugins/sigma.helpers.graph/sigma.helpers.graph.js"></script>
+<script src="../plugins/sigma.plugins.activeState/sigma.plugins.activeState.js"></script>
+<script src="../plugins/sigma.plugins.select/sigma.plugins.select.js"></script>
+<script src="../plugins/sigma.plugins.keyboard/sigma.plugins.keyboard.js"></script>
+<script src="../plugins/sigma.plugins.lasso/sigma.plugins.lasso.js"></script>
+<script src="../plugins/sigma.renderers.halo/settings.js"></script>
+<script src="../plugins/sigma.renderers.halo/sigma.renderers.halo.js"></script>
+
+<script src="../plugins/sigma.renderers.edgeLabels/settings.js"></script>
+<script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
+<script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js"></script>
+<script src="../plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js"></script>
+
+<script src="../plugins/sigma.renderers.linkurious/settings.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.labels.def.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.hovers.def.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.def.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.cross.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.diamond.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.equilateral.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.square.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.star.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.def.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.curve.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.arrow.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edgehovers.def.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edgehovers.curve.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edgehovers.arrow.js"></script>
+<script src="../plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edgehovers.curvedArrow.js"></script>
+
+<script src="../plugins/sigma.plugins.tooltips/sigma.plugins.tooltips.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+
+<div id="container">
+  <style>
+	#graph-container {
+	  top: 0;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  position: absolute;
+	}
+
+  kbd {
+	background-color: #e7e7e7;
+	background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+	background-image: linear-gradient(#fefefe, #e7e7e7);
+	background-repeat: repeat-x;
+	display: inline-block;
+	padding: 3px 5px;
+	font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	line-height: 10px;
+	color: #000;
+	border: 1px solid #cfcfcf;
+	border-radius: 2px;
+  }
+
+  .key.arrow {
+	 font-size: 15px;
+	 font-weight: bold
+  }
+
+  .container {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	line-height: 30px;
+	border: 1px solid #ccc;
+	padding: 10px 20px;
+	background: white;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+  }
+  .left {
+	display: inline-block;
+	width: 100px
+  }
+
+	.sigma-tooltip {
+      max-width: 240px;
+      max-height: 280px;
+      background-color: rgb(249, 247, 237);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      border-radius: 6px;
+    }
+
+    .sigma-tooltip-header {
+      font-variant: small-caps;
+      font-size: 120%;
+      color: #437356;
+      border-bottom: 1px solid #aac789;
+      padding: 10px;
+    }
+
+    .sigma-tooltip-body {
+      padding: 10px;
+    }
+
+    .sigma-tooltip-body th {
+      color: #999;
+      text-align: left;
+    }
+
+    .sigma-tooltip-footer {
+      padding: 10px;
+      border-top: 1px solid #aac789;
+    }
+
+    .sigma-tooltip > .arrow {
+      border-width: 10px;
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
+
+    .sigma-tooltip.top {
+      margin-top: -12px;
+    }
+    .sigma-tooltip.top > .arrow {
+      left: 50%;
+      bottom: -10px;
+      margin-left: -10px;
+      border-top-color: rgb(249, 247, 237);
+      border-bottom-width: 0;
+    }
+
+    .sigma-tooltip.bottom {
+      margin-top: 12px;
+    }
+    .sigma-tooltip.bottom > .arrow {
+      left: 50%;
+      top: -10px;
+      margin-left: -10px;
+      border-bottom-color: rgb(249, 247, 237);
+      border-top-width: 0;
+    }
+
+    .sigma-tooltip.left {
+      margin-left: -12px;
+    }
+    .sigma-tooltip.left > .arrow {
+      top: 50%;
+      right: -10px;
+      margin-top: -10px;
+      border-left-color: rgb(249, 247, 237);
+      border-right-width: 0;
+    }
+
+    .sigma-tooltip.right {
+      margin-left: 12px;
+    }
+    .sigma-tooltip.right > .arrow {
+      top: 50%;
+      left: -10px;
+      margin-top: -10px;
+      border-right-color: rgb(249, 247, 237);
+      border-left-width: 0;
+    }
+
+
+  </style>
+  <div id="graph-container"></div>
+  <div class="container">
+    <div><span class="left"><kbd>spacebar</kbd> + <kbd>s</kbd></span> Enable lasso tool</div>
+  </div>
+</div>
+<script>
+/**
+ * This example shows how to use the dragNodes plugin.
+ */
+var cypher_query = 'MATCH (n) OPTIONAL MATCH (n)-[r]->(m) RETURN n,r,m LIMIT 100';
+
+ sigma.neo4j.cypher(
+		{ url: 'http://localhost:7474', user: 'neo4j', password: 'admin' },
+		cypher_query,
+		{ 	container: 'graph-container',
+			settings: {
+				enableEdgeHovering: false,
+				borderSize: 2,
+				outerBorderSize: 3,
+				defaultNodeBorderColor: '#fff',
+				defaultNodeOuterBorderColor: 'rgb(236, 81, 72)',
+				nodeHaloColor: '#0000ff',
+			    edgeHaloColor: '#0000ff',
+			    nodeHaloSize: 25,
+			    edgeHaloSize: 10,
+		        //doubleClickEnabled: false,
+			    minEdgeSize: 0.5,
+			    maxEdgeSize: 4,
+		        enableEdgeHovering: true,
+			    edgeHoverColor: 'edge',
+			    defaultEdgeHoverColor: '#000',
+			    edgeHoverSizeRatio: 1,
+			    edgeHoverExtremities: true
+			  }		
+		} ,
+		function(s) {
+			console.log('Number of nodes :'+ s.graph.nodes().length);
+			console.log('Number of edges :'+ s.graph.edges().length);
+			// Instanciate the ActiveState plugin:
+			var activeState = sigma.plugins.activeState(s);
+
+			// Initialize the dragNodes plugin:
+			var dragListener = sigma.plugins.dragNodes(s, s.renderers[0], activeState);
+
+			// Initialize the Select plugin:
+			var select = sigma.plugins.select(s, activeState);
+
+			// Initialize the Keyboard plugin:
+			var keyboard = sigma.plugins.keyboard(s, s.renderers[0]);
+
+			// Bind the Keyboard plugin to the Select plugin:
+			select.bindKeyboard(keyboard);
+
+			dragListener.bind('startdrag', function(event) {
+			  console.log(event);
+			});
+			dragListener.bind('drag', function(event) {
+			  console.log(event);
+			});
+			dragListener.bind('drop', function(event) {
+			  console.log(event);
+			});
+			dragListener.bind('dragend', function(event) {
+			  console.log(event);
+			});
+			
+			// Initialize the lasso plugin:
+			var lasso = new sigma.plugins.lasso(s, s.renderers[0], {
+			  'strokeStyle': 'rgb(236, 81, 72)',
+			  'lineWidth': 2,
+			  'fillWhileDrawing': true,
+			  'fillStyle': 'rgba(236, 81, 72, 0.2)',
+			  'cursor': 'crosshair'
+			});
+
+			select.bindLasso(lasso);
+			lasso.activate();
+
+			// halo on active nodes:
+			function renderHalo() {
+			  s.renderers[0].halo({
+				nodes: activeState.nodes()
+			  });
+			}
+
+			s.renderers[0].bind('render', function(e) {
+			  renderHalo();
+			});
+
+
+			//"spacebar" + "s" keys pressed binding for the lasso tool
+			keyboard.bind('32+83', function() {
+			  if (lasso.isActive) {
+				lasso.deactivate();
+			  } else {
+				lasso.activate();
+			  }
+			});
+
+			// Listen for selectedNodes event
+			lasso.bind('selectedNodes', function (event) {
+			  setTimeout(function() {
+				lasso.deactivate();
+				s.refresh({ skipIdexation: true });
+			  }, 0);
+			});
+
+			// Remove duplicates in a specified array.
+			// See http://stackoverflow.com/a/1584370
+			function arrayUnique(array) {
+			  var a = array.concat();
+			  for(var i=0; i<a.length; ++i) {
+			    for(var j=i+1; j<a.length; ++j) {
+			      if(a[i] === a[j])
+			        a.splice(j--, 1);
+			    }
+			  }
+			  return a;
+			};
+
+			function renderHalo() {
+			  s.renderers[0].halo({
+			    nodes: s.graph.nodes()
+			  });
+			}
+
+			renderHalo();
+
+			s.renderers[0].bind('render', function(e) {
+			  renderHalo();
+			});
+
+			s.bind('clickStage', function(e) {
+			  renderHalo();
+			});
+
+			s.bind('overNodes', function(e) {
+			  var adjacentNodes = [],
+			      adjacentEdges = [];
+
+			  // Get adjacent nodes:
+			  e.data.nodes.forEach(function(node) {
+			    adjacentNodes = adjacentNodes.concat(s.graph.adjacentNodes(node.id));
+			  });
+
+			  // Add hovered nodes to the array and remove duplicates:
+			  adjacentNodes = arrayUnique(adjacentNodes.concat(e.data.nodes));
+
+			  // Get adjacent edges:
+			  e.data.nodes.forEach(function(node) {
+			    adjacentEdges = adjacentEdges.concat(s.graph.adjacentEdges(node.id));
+			  });
+
+			  // Remove duplicates:
+			  adjacentEdges = arrayUnique(adjacentEdges);
+
+			  // Render halo:
+			  s.renderers[0].halo({
+			    nodes: adjacentNodes,
+			    edges: adjacentEdges
+			  });
+			});
+
+			// Bind the events:
+			s.bind('overNode outNode clickNode doubleClickNode rightClickNode', function(e) {
+			  console.log(e.type, e.data.node.label, e.data.captor);
+			});
+			s.bind('overEdge outEdge clickEdge doubleClickEdge rightClickEdge', function(e) {
+			  console.log(e.type, e.data.edge, e.data.captor);
+			});
+			s.bind('clickStage', function(e) {
+			  console.log(e.type, e.data.captor);
+			});
+			s.bind('doubleClickStage rightClickStage', function(e) {
+			  console.log(e.type, e.data.captor);
+			});
+
+
+			var config = {
+			  node: {
+			  	show: 'overNode',
+			    hide: 'outNode',
+			    cssClass: 'sigma-tooltip',
+			    position: 'top',
+			    template: '{{label}}' + ' ' + '{{data.name}}'
+			  }
+			};
+
+/*			var config = {
+			  node: {
+			    show: 'overNode',
+			    hide: 'outNode',
+			    cssClass: 'sigma-tooltip',
+			    position: 'top',
+			    //autoadjust: true,
+			    template:
+			    '<div class="arrow"></div>' +
+			    ' <div class="sigma-tooltip-header">{{label}}</div>' +
+			    '  <div class="sigma-tooltip-body">' +
+			    '    <table>' +
+			    '      <tr><th>Name</th> <td>{{data.name}}</td></tr>' +
+			    '      <tr><th>Born</th> <td>{{data.born}}</td></tr>' +
+			    '    </table>' +
+			    '  </div>' +
+			    '  <div class="sigma-tooltip-footer">Number of connections: {{degree}}</div>',
+			    renderer: function(node, template) {
+			      // The function context is s.graph
+			      node.degree = this.degree(node.id);
+
+			      // Returns an HTML string:
+			      return Mustache.render(template, node);
+
+			      // Returns a DOM Element:
+			      //var el = document.createElement('div');
+			      //return el.innerHTML = Mustache.render(template, node);
+			    }
+			  }
+			};*/
+
+			// Instanciate the tooltips plugin with a Mustache renderer for node tooltips:
+			var tooltips = sigma.plugins.tooltips(s, s.renderers[0], config);
+
+
+			// Manually open a tooltip on a node:
+			var n = s.graph.nodes('n10');
+			var prefix = s.renderers[0].camera.prefix;
+			tooltips.open(n, config.node, n[prefix + 'x'], n[prefix + 'y']);
+
+
+			tooltips.bind('shown', function(event) {
+			  console.log('tooltip shown', event);
+			});
+
+			tooltips.bind('hidden', function(event) {
+			  console.log('tooltip hidden', event);
+			});
+		}
+);
+
+// Calling neo4j to get all its relationship type
+sigma.neo4j.getTypes(
+		{ url: 'http://localhost:7474', user:'neo4j', password:'admin' },
+		function(types) {
+			console.log("Relationship types" + types);
+		}
+);
+
+// Calling neo4j to get all its node label
+sigma.neo4j.getLabels(
+		{ url: 'http://localhost:7474', user:'neo4j', password:'admin' },
+		function(labels) {
+			console.log("Node labels" + labels);
+		}
+);
+
+sigma.renderers.def = sigma.renderers.canvas;
+
+</script>

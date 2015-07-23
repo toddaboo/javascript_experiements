@@ -1,0 +1,197 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>DoubleHeadedBladedViperSnake</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Double-Headed-Bladed-Viper-Snake</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Example row of columns -->
+
+      <div class="row">
+        <br />
+        <div class="input-group input-group-lg">
+          <input id="cypher" type="text" class="form-control" placeholder="Cypher query goes here...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" onclick="myFunction()">Go!</button>
+          </span>
+        </div>
+      </div>
+      <div class="drags"> 
+        <ul id="nodes" class="list-group tile__list"></ul>
+        <ul id="rels" class="list-group tile__list"></ul>
+      </div>
+
+      <div style="position: relative; width: 100%; height: 600px;">
+          <div id="graph-container"></div>
+      </div>
+
+      <!--<div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2015</p>
+      </footer> -->
+    </div> <!-- /container -->         
+
+        <!-- START SIGMA IMPORTS -->
+        <script src="src/sigma.core.js"></script>
+        <script src="src/conrad.js"></script>
+        <script src="src/utils/sigma.utils.js"></script>
+        <script src="src/utils/sigma.polyfills.js"></script>
+        <script src="src/sigma.settings.js"></script>
+        <script src="src/classes/sigma.classes.dispatcher.js"></script>
+        <script src="src/classes/sigma.classes.configurable.js"></script>
+        <script src="src/classes/sigma.classes.graph.js"></script>
+        <script src="src/classes/sigma.classes.camera.js"></script>
+        <script src="src/classes/sigma.classes.quad.js"></script>
+        <script src="src/classes/sigma.classes.edgequad.js"></script>
+        <script src="src/captors/sigma.captors.mouse.js"></script>
+        <script src="src/captors/sigma.captors.touch.js"></script>
+        <script src="src/renderers/sigma.renderers.canvas.js"></script>
+        <script src="src/renderers/sigma.renderers.webgl.js"></script>
+        <script src="src/renderers/sigma.renderers.svg.js"></script>
+        <script src="src/renderers/sigma.renderers.def.js"></script>
+        <script src="src/renderers/webgl/sigma.webgl.nodes.def.js"></script>
+        <script src="src/renderers/webgl/sigma.webgl.nodes.fast.js"></script>
+        <script src="src/renderers/webgl/sigma.webgl.edges.def.js"></script>
+        <script src="src/renderers/webgl/sigma.webgl.edges.fast.js"></script>
+        <script src="src/renderers/webgl/sigma.webgl.edges.arrow.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.labels.def.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.hovers.def.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.nodes.def.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.edges.def.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.edges.curve.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.edges.arrow.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.edgehovers.def.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.edgehovers.curve.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.edgehovers.arrow.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.edgehovers.curvedArrow.js"></script>
+        <script src="src/renderers/canvas/sigma.canvas.extremities.def.js"></script>
+        <script src="src/renderers/svg/sigma.svg.utils.js"></script>
+        <script src="src/renderers/svg/sigma.svg.nodes.def.js"></script>
+        <script src="src/renderers/svg/sigma.svg.edges.def.js"></script>
+        <script src="src/renderers/svg/sigma.svg.edges.curve.js"></script>
+        <script src="src/renderers/svg/sigma.svg.labels.def.js"></script>
+        <script src="src/renderers/svg/sigma.svg.hovers.def.js"></script>
+        <script src="src/middlewares/sigma.middlewares.rescale.js"></script>
+        <script src="src/middlewares/sigma.middlewares.copy.js"></script>
+        <script src="src/misc/sigma.misc.animation.js"></script>
+        <script src="src/misc/sigma.misc.bindEvents.js"></script>
+        <script src="src/misc/sigma.misc.bindDOMEvents.js"></script>
+        <script src="src/misc/sigma.misc.drawHovers.js"></script>
+        <!-- END SIGMA IMPORTS -->
+        <script src="plugins/sigma.parsers.json/sigma.parsers.json.js"></script>
+        <script src="plugins/sigma.parsers.cypher/sigma.parsers.cypher.js"></script>
+        <script src="plugins/sigma.renderers.halo/sigma.renderers.halo.js"></script>
+
+        <script src="plugins/sigma.plugins.dragNodes/settings.js"></script>
+        <script src="plugins/sigma.plugins.dragNodes/sigma.plugins.dragNodes.js"></script>
+
+        <script src="plugins/sigma.helpers.graph/sigma.helpers.graph.js"></script>
+        <script src="plugins/sigma.plugins.activeState/sigma.plugins.activeState.js"></script>
+        <script src="plugins/sigma.plugins.select/sigma.plugins.select.js"></script>
+        <script src="plugins/sigma.plugins.keyboard/sigma.plugins.keyboard.js"></script>
+        <script src="plugins/sigma.plugins.lasso/sigma.plugins.lasso.js"></script>
+        <script src="plugins/sigma.renderers.halo/settings.js"></script>
+        <script src="plugins/sigma.renderers.halo/sigma.renderers.halo.js"></script>
+
+        <script src="plugins/sigma.renderers.edgeLabels/settings.js"></script>
+        <script src="plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
+        <script src="plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js"></script>
+        <script src="plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js"></script>
+
+        <script src="plugins/sigma.renderers.linkurious/settings.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.labels.def.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.hovers.def.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.def.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.cross.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.diamond.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.equilateral.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.square.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.star.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.def.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.curve.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.arrow.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edgehovers.def.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edgehovers.curve.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edgehovers.arrow.js"></script>
+        <script src="plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edgehovers.curvedArrow.js"></script>
+
+        <script src="plugins/sigma.plugins.tooltips/sigma.plugins.tooltips.js"></script>
+        <script src="js/vendor/mustache.min.js"></script>
+        <script src="js/vendor/Sortable.js"></script>
+        <script src="js/vendor/Ply.min.js"></script>
+        <!--<script src="js/vendor/app.js"></script> -->
+        <script src="js/vendor/repos.js"></script>
+
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
